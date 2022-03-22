@@ -13,3 +13,7 @@ for (let i = 0; i < 16 * 16 -1; i++) {
   etchBox.setAttribute('class', 'etchBox');
   container.appendChild(etchBox);
 }
+
+
+document.querySelector('.etchBox').addEventListener("mouseover", function () {
+  document.querySelector('.etchBox').getElementsByClassName.background = purple;

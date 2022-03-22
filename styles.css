@@ -15,10 +15,10 @@ body {
 
 }
 
+/* set height and width to 68.75% because it is divisble by 16 */
 .container {
-  border: 2px solid black;
-  height: 50%;
-  width: 50%;
+  height: 68.75%;
+  width: 68.75%;
   background-color: white;
   display: flex;
   flex-flow: wrap;
@@ -39,6 +39,10 @@ body {
 
 .etchBox {
   border: 1px solid black;
-  flex: 0 1 6.25%;
+  flex: 1 1 6.25%;
   height: 6.25%;
+}
+
+.etchHover {
+  background-color: blueviolet;
 }
