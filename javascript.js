@@ -14,6 +14,10 @@ for (let i = 0; i < 16 * 16 -1; i++) {
   container.appendChild(etchBox);
 }
 
-
-document.querySelector('.etchBox').addEventListener("mouseover", function () {
-  document.querySelector('.etchBox').getElementsByClassName.background = purple;
+const boxes = document.querySelectorAll('.etchBox');
+boxes.forEach((box) => {
+  box.addEventListener('mouseover', () => {
+  box.style.backgroundColor = 'blue';
+  box.style.color = 'red';
+  });
+});
