@@ -18,6 +18,5 @@ const boxes = document.querySelectorAll('.etchBox');
 boxes.forEach((box) => {
   box.addEventListener('mouseover', () => {
   box.style.backgroundColor = 'blue';
-  box.style.color = 'red';
   });
 });
