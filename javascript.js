@@ -45,23 +45,20 @@ function clearBoxes() {
     gridSize = parseInt(window.prompt('How many squares per side of the grid (max: 100)?', ''));
     gridSize = parseInt(gridSize);
   } while(isNaN(gridSize) || gridSize > 100 || gridSize < 1);
-  drawGrid(gridSize);
+  removeBoxes();
+  //drawGrid(gridSize);
 }
 
-function drawGrid(num) {
+function removeBoxes() {
   boxes.forEach((box) => 
-    box.remove());
-}
-//  });
+    box.remove());  
+  }
+
+//function drawGrid(num) {
 //  for (let i = 0; i < num * num -1; i++) {
 //    let etchBox = document.createElement('div');
 //    etchBox.setAttribute('class', 'etchBox');
 //    container.appendChild(etchBox);
 //  }
-//  box.style.flexBasis = 100/num;
-//  box.style.height = 100/num;
-//
-//  // need to set container height and width automatically based on box size. 
-//  // also need to set flex basis automatically
-//}
-//
+//} // need to set container height and width automatically based on box size. 
+// also need to set flex basis automatically
