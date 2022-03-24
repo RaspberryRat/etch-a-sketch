@@ -94,10 +94,12 @@
   align-items: flex-start;
   margin-left: 300px;
   gap: 30px;
+  margin-right: 15px;
 }
 
 .invisible {
   /* needs to match .btn-color-picker margin-left to center .container */
   margin-right: 300px;
+  margin-left: 15px;
 }
 
