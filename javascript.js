@@ -5,7 +5,6 @@
 const container = document.querySelector('.container');
 const etchBox = document.createElement('div');
 etchBox.setAttribute('class', 'etchBox');
-
 container.appendChild(etchBox);
 
 
@@ -20,23 +19,17 @@ for (let i = 0; i < 16 * 16 -1; i++) {
 //  box.style.flexBasis = 100/16;
 //  box.style.height = 100/16;
 //});
+
 const boxes = document.querySelectorAll('.etchBox');
-boxes.forEach((box) => {
-  box.addEventListener('mouseover', () => {
+container.addEventListener('click', drawing);
+
+function drawing() {
+  boxes.forEach((box) => {
+    box.addEventListener('mouseover', () => {
     box.style.backgroundColor = 'blue';
+    });
   });
-});
-
-
-//container.addEventListener('click', drawing);
-//
-//function drawing() {
-//  boxes.forEach((box) => {
-//    box.addEventListener('mouseover', () => {
-//    box.style.backgroundColor = 'blue';
-//    });
-//  });
-//}
+}
       
 
 const reset = document.querySelector('.resetBtn');
