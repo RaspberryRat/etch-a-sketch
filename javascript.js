@@ -1,11 +1,7 @@
-//create a div box element
-//append to container box
-//loop until it is 16 * 16
-
 const container = document.querySelector('.container');
 
 
-
+//draws original grid
 for (let i = 0; i < 16 * 16; i++) {
   let etchBox = document.createElement('div');
   etchBox.setAttribute('class', 'etchBox');
@@ -18,14 +14,15 @@ for (let i = 0; i < 16 * 16; i++) {
   
 let boxes = document.querySelectorAll('.etchBox');
 
-
+//starting colour
+let sketchColor = 'black';
 
 container.addEventListener('click', drawing);
 
 function drawing() {
   boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
-    box.style.backgroundColor = 'blue';
+    box.style.backgroundColor = sketchColor;
     });
   });
 }
@@ -35,6 +32,7 @@ const reset = document.querySelector('.resetBtn');
 
 reset.addEventListener('click', clearBoxes);
 
+//sets all boxes as default and calls clear grid and draw a new grid size
 function clearBoxes() {
   boxes.forEach((box) => {
     box.style.backgroundColor = 'white';
@@ -47,11 +45,13 @@ function clearBoxes() {
   drawGrid(gridSize);
 }
 
+//clears the previous grid 
 function removeBoxes() {
   boxes.forEach((box) => 
     box.remove());
   }
 
+  //creates the gridsize for the drawing area
 function drawGrid(num) {
   for (let i = 0; i < num * num; i++) {
     etchBox = document.createElement('div');
@@ -63,3 +63,15 @@ function drawGrid(num) {
   }
   boxes = document.querySelectorAll('.etchBox');
 } 
+
+const redBtn = document.querySelector('#red-btn');
+const greenBtn = document.querySelector('#green-btn');
+const blueBtn = document.querySelector('#blue-btn');
+const blackBtn = document.querySelector('#black-btn');
+const randomBtn = document.querySelector('#random-btn');
+
+redBtn.addEventListener('click', () => sketchColor = '#ff3d46');
+greenBtn.addEventListener('click', () => sketchColor = '#2fff6b');
+blueBtn.addEventListener('click', () => sketchColor = '#289eff');
+blackBtn.addEventListener('click', () => sketchColor = 'black');
+randomBtn.addEventListener('click', () => sketchColor = 'yellow');
