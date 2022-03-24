@@ -40,7 +40,7 @@ function clearBoxes() {
     gridSize = parseInt(window.prompt('How many squares per side of the grid (max: 100)? (starting grid is 16)', ''));
   } while(isNaN(gridSize) || gridSize > 100 || gridSize < 1);
   removeBoxes();
-  drawGrid();
+  drawGrid(gridSize);
 }
 
 function removeBoxes() {
@@ -48,8 +48,8 @@ function removeBoxes() {
     box.remove());
   }
 
-function drawGrid() {
-  for (let i = 0; i < 16 * 15; i++) {
+function drawGrid(num) {
+  for (let i = 0; i < num * num; i++) {
     let newEtchBox = document.createElement('div');
     newEtchBox.setAttribute('class', 'newEtchBox');
     container.appendChild(newEtchBox);
