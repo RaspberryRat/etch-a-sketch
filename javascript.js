@@ -3,23 +3,17 @@
 //loop until it is 16 * 16
 
 const container = document.querySelector('.container');
-const etchBox = document.createElement('div');
-etchBox.setAttribute('class', 'etchBox');
-container.appendChild(etchBox);
 
 
-for (let i = 0; i < 16 * 16 -1; i++) {
+
+for (let i = 0; i < 16 * 16; i++) {
   let etchBox = document.createElement('div');
   etchBox.setAttribute('class', 'etchBox');
   container.appendChild(etchBox);
   }
   
 const boxes = document.querySelectorAll('.etchBox');
-  //this isn't working if I remove it in css
-boxes.forEach((box) => {
-  box.style.flexBasis = 100/16*100;
-  box.style.height = 100/16*100;
-});
+
 
 
 container.addEventListener('click', drawing);
@@ -46,19 +40,19 @@ function clearBoxes() {
     gridSize = parseInt(window.prompt('How many squares per side of the grid (max: 100)? (starting grid is 16)', ''));
   } while(isNaN(gridSize) || gridSize > 100 || gridSize < 1);
   removeBoxes();
-  //drawGrid(gridSize);
+  drawGrid();
 }
 
 function removeBoxes() {
   boxes.forEach((box) => 
-    box.remove());  
+    box.remove());
   }
 
-function drawGrid(num) {
-  for (let i = 0; i < num * num -1; i++) {
-    let etchBox = document.createElement('div');
-    etchBox.setAttribute('class', 'etchBox');
-    container.appendChild(etchBox);
+function drawGrid() {
+  for (let i = 0; i < 16 * 15; i++) {
+    let newEtchBox = document.createElement('div');
+    newEtchBox.setAttribute('class', 'newEtchBox');
+    container.appendChild(newEtchBox);
   }
 } // need to set container height and width automatically based on box size. 
  //also need to set flex basis automatically

@@ -55,3 +55,11 @@
   box-shadow: 3px 4px #888888;
 }
 
+.newEtchBox {
+  border: 1px solid black;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 6.25%;
+  height: 6.25%;
+}
+
