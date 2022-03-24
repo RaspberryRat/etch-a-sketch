@@ -45,12 +45,13 @@ function clearBoxes() {
     gridSize = parseInt(window.prompt('How many squares per side of the grid (max: 100)?', ''));
     gridSize = parseInt(gridSize);
   } while(isNaN(gridSize) || gridSize > 100 || gridSize < 1);
-  //drawGrid(gridSize);
+  drawGrid(gridSize);
 }
 
-//function drawGrid(num) {
-//  boxes.forEach((box) => {
-//    box.remove();
+function drawGrid(num) {
+  boxes.forEach((box) => 
+    box.remove());
+}
 //  });
 //  for (let i = 0; i < num * num -1; i++) {
 //    let etchBox = document.createElement('div');
