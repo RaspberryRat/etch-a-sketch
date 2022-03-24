@@ -34,19 +34,19 @@ function drawing() {
 
 const reset = document.querySelector('.resetBtn');
 
-//reset.addEventListener('click', clearBoxes);
+reset.addEventListener('click', clearBoxes);
 
-//function clearBoxes() {
-//  boxes.forEach((box) => {
-//    box.style.backgroundColor = 'white';
-//  });
-//  let gridSize;
-//  do {
-//    gridSize = parseInt(window.prompt('How many squares per side of the grid (max: 100)?', ''));
-//    gridSize = parseInt(gridSize);
-//  } while(isNaN(gridSize) || gridSize > 100 || gridSize < 1);
-//  //drawGrid(gridSize);
-//}
+function clearBoxes() {
+  boxes.forEach((box) => {
+    box.style.backgroundColor = 'white';
+  });
+  let gridSize;
+  do {
+    gridSize = parseInt(window.prompt('How many squares per side of the grid (max: 100)?', ''));
+    gridSize = parseInt(gridSize);
+  } while(isNaN(gridSize) || gridSize > 100 || gridSize < 1);
+  //drawGrid(gridSize);
+}
 
 //function drawGrid(num) {
 //  boxes.forEach((box) => {
