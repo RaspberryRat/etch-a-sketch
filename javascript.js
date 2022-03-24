@@ -72,32 +72,14 @@ const greenBtn = document.querySelector('#green-btn');
 const blueBtn = document.querySelector('#blue-btn');
 const blackBtn = document.querySelector('#black-btn');
 const randomBtn = document.querySelector('#random-btn');
+const eraserBtn = document.querySelector('#eraser-btn');
 
 redBtn.addEventListener('click', () => sketchColor = '#ff3d46');
 greenBtn.addEventListener('click', () => sketchColor = '#2fff6b');
 blueBtn.addEventListener('click', () => sketchColor = '#289eff');
 blackBtn.addEventListener('click', () => sketchColor = 'black');
 randomBtn.addEventListener('click', () => sketchColor = 'rainbow');
+eraserBtn.addEventListener('click', () => sketchColor = '#ebebeb');
 
-//function randomColor() 
-//  let letters = '0123456789ABCDEF';
-//  let color = '#';
-//  for (let i = 0; i < 6; i++) {
-//    color += letters[Math.floor(Math.random() * 16)];
-//  }
-//  return color;
-//}
-//
-//function randomDraw() {
-//  boxes.forEach((box) => {
-//    box.addEventListener('mouseover', () => {
-//      let letters = '0123456789ABCDEF';
-//      let color = '#';
-//      for (let i = 0; i < 6; i++) {
-//        color += letters[Math.floor(Math.random() * 16)];
-//      }
-//      box.style.backgroundColor = color;
-//    });
-//  });
-//}
+
   
