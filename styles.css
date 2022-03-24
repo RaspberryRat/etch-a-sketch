@@ -11,14 +11,14 @@
   justify-content: space-between;
   height: 100vh;
   flex-flow: column;
-  background-color: rgb(42, 130, 189);
+  background-color: #85CDCB;
   width: 100%;
 }
 
 .container {
   height: 600px;
   width: 600px;
-  background-color: white;
+  background-color: rgb(235, 235, 235);
   display: flex;
   flex-flow: wrap;
   align-items: flex-start;
@@ -30,26 +30,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #15cec5;
+  background-color: #E27D60;
   width: 100%;
   padding: 15px;
-  color: #6b6560;
+  color: #3a3734;
 }
 
 .etchBox {
-  border: 1px solid black;
+  border: 1px;
   flex-grow: 1;
   flex-shrink: 1;
 }
 
 .resetBtn {
+  background-color: #C38D9E ;
+}
+
+.color-choice-btn,
+.resetBtn {
   padding: 5px;
-  background-color: #4CAF50 ;
   border: none;
   color: white;
   text-align: center;
   font-size: 16px;
   box-shadow: 3px 4px #888888;
+}
+
+#red-btn {
+    background-color: #ff3d46;
+}
+
+#green-btn {
+  background-color: #2fff6b;
+  color: rgb(112, 108, 108)
+}
+
+#blue-btn {
+  background-color: #289eff;
+}
+
+#black-btn {
+  background-color: black;
+}
+
+#random-btn {
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
 }
 
 .mid-page-container {
@@ -68,5 +97,7 @@
 }
 
 .invisible {
+  /* needs to match .btn-color-picker margin-left to center .container */
   margin-right: 300px;
 }
+
