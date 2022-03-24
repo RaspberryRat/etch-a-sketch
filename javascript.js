@@ -16,7 +16,7 @@ for (let i = 0; i < 16 * 16; i++) {
 
   }
   
-const boxes = document.querySelectorAll('.etchBox');
+let boxes = document.querySelectorAll('.etchBox');
 
 
 
@@ -61,5 +61,5 @@ function drawGrid(num) {
     etchBox.style.flexBasis = (600/num) + 'px';
     etchBox.style.height = (600/num) + 'px';
   }
-  
+  boxes = document.querySelectorAll('.etchBox');
 } 
