@@ -10,6 +10,10 @@ for (let i = 0; i < 16 * 16; i++) {
   let etchBox = document.createElement('div');
   etchBox.setAttribute('class', 'etchBox');
   container.appendChild(etchBox);
+  //600 is the pixel size of the container
+  etchBox.style.flexBasis = (600/16) + 'px';
+  etchBox.style.height = (600/16) + 'px';
+
   }
   
 const boxes = document.querySelectorAll('.etchBox');
@@ -50,9 +54,12 @@ function removeBoxes() {
 
 function drawGrid(num) {
   for (let i = 0; i < num * num; i++) {
-    let newEtchBox = document.createElement('div');
-    newEtchBox.setAttribute('class', 'newEtchBox');
-    container.appendChild(newEtchBox);
+    etchBox = document.createElement('div');
+    etchBox.setAttribute('class', 'etchBox');
+    container.appendChild(etchBox);
+    //600 is the pixel size of the container
+    etchBox.style.flexBasis = (600/num) + 'px';
+    etchBox.style.height = (600/num) + 'px';
   }
-} // need to set container height and width automatically based on box size. 
- //also need to set flex basis automatically
+  
+} 
