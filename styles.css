@@ -12,10 +12,9 @@
   height: 100vh;
   flex-flow: column;
   background-color: rgb(42, 130, 189);
-
+  width: 100%;
 }
 
-/* set height and width to 68.75% because it is divisble by 16 */
 .container {
   height: 600px;
   width: 600px;
@@ -32,7 +31,7 @@
   align-items: center;
   justify-content: center;
   background-color: #15cec5;
-  width: 100vh;
+  width: 100%;
   padding: 15px;
   color: #6b6560;
 }
@@ -53,4 +52,21 @@
   box-shadow: 3px 4px #888888;
 }
 
+.mid-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 
+.btn-color-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 300px;
+  gap: 30px;
+}
+
+.invisible {
+  margin-right: 300px;
+}
