@@ -71,14 +71,14 @@ const redBtn = document.querySelector('#red-btn');
 const greenBtn = document.querySelector('#green-btn');
 const blueBtn = document.querySelector('#blue-btn');
 const blackBtn = document.querySelector('#black-btn');
-const randomBtn = document.querySelector('#random-btn');
+const rainbowBtn = document.querySelector('#rainbow-btn');
 const eraserBtn = document.querySelector('#eraser-btn');
 
 redBtn.addEventListener('click', () => sketchColor = '#ff3d46');
 greenBtn.addEventListener('click', () => sketchColor = '#2fff6b');
 blueBtn.addEventListener('click', () => sketchColor = '#289eff');
 blackBtn.addEventListener('click', () => sketchColor = 'black');
-randomBtn.addEventListener('click', () => sketchColor = 'rainbow');
+rainbowBtn.addEventListener('click', () => sketchColor = 'rainbow');
 eraserBtn.addEventListener('click', () => sketchColor = '#ebebeb');
 
 
