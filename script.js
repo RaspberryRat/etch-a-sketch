@@ -20,8 +20,8 @@ function drawGrid(num) {
     etchBox.setAttribute('class', 'etchBox');
     container.appendChild(etchBox);
     //600 is the pixel size of the container
-    etchBox.style.flexBasis = (100/num) + '%';
-    etchBox.style.height = (100/num) + '%';
+    etchBox.style.flexBasis = (500/num) + 'px';
+    etchBox.style.height = (500/num) + 'px';
   }
   boxes = document.querySelectorAll('.etchBox');
 } 
@@ -29,6 +29,11 @@ function drawGrid(num) {
 function drawing() {
   boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
+      let currentColor = window.getComputedStyle(box).getPropertyValue("background-color");
+      console.log(currentColor);
+      if (currentColor === 'rgb(47, 255, 107)') {
+        box.style.backgroundColor = 'rgb(47, 255, 107)';
+      }
       if (sketchColor === 'rainbow') {
         box.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
       }  
@@ -36,6 +41,8 @@ function drawing() {
     });
   });
 }   
+
+
 
 //sets all boxes as default and calls clear grid and draw a new grid size
 function clearBoxes() {
