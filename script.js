@@ -32,7 +32,7 @@ function drawing() {
       let currentColor = window.getComputedStyle(box).getPropertyValue("background-color");
       //console.log(currentColor);
       rgbToHsl(currentColor);
-      //console.log(currentColor);
+      //console.log('hsl = ' + currentColor);
       if (sketchColor === 'rainbow') {
         box.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
       }  
@@ -42,14 +42,17 @@ function drawing() {
 } 
 
 const rgbToHsl = (color) => {
+  if (color == 'rgba(0, 0, 0, 0)') {
+    color = 'rgb(235, 235, 235)';
+  }
   let rgb = color.substring(4, color.length-1)
                   .replace(/ /g, '')
                   .split(',');
-  console.log(rgb);
-  let r = rgb[0];
-  let g = rgb[1];
-  let b = rgb[2];
+  let r = parseInt(rgb[0]);
+  let g = parseInt(rgb[1]);
+  let b = parseInt(rgb[2]);
   console.log('r = ' + r, 'g = ' + g, 'b = ' + b);
+  console.log(typeof(r));
   r /= 255;
   g /= 255;
   b /= 255;
