@@ -12,7 +12,7 @@ const reset = document.querySelector('.resetBtn');
 let boxes = document.querySelectorAll('.etchBox');
 let sketchColor = 'black'; //starting colour
 
-onload = drawGrid(16);
+onload = drawGrid(24);
 
 function drawGrid(num) {
   for (let i = 0; i < num * num; i++) {
@@ -20,8 +20,8 @@ function drawGrid(num) {
     etchBox.setAttribute('class', 'etchBox');
     container.appendChild(etchBox);
     //600 is the pixel size of the container
-    etchBox.style.flexBasis = (600/num) + 'px';
-    etchBox.style.height = (600/num) + 'px';
+    etchBox.style.flexBasis = (100/num) + '%';
+    etchBox.style.height = (100/num) + '%';
   }
   boxes = document.querySelectorAll('.etchBox');
 } 
