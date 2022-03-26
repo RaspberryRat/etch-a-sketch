@@ -30,17 +30,46 @@ function drawing() {
   boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
       let currentColor = window.getComputedStyle(box).getPropertyValue("background-color");
-      console.log(currentColor);
-      if (currentColor === 'rgb(47, 255, 107)') {
-        box.style.backgroundColor = 'rgb(47, 255, 107)';
-      }
+      //console.log(currentColor);
+      rgbToHsl(currentColor);
+      //console.log(currentColor);
       if (sketchColor === 'rainbow') {
         box.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
       }  
       box.style.backgroundColor = sketchColor;
     });
   });
-}   
+} 
+
+const rgbToHsl = (color) => {
+  let rgb = color.substring(4, color.length-1)
+                  .replace(/ /g, '')
+                  .split(',');
+  console.log(rgb);
+  let r = rgb[0];
+  let g = rgb[1];
+  let b = rgb[2];
+  console.log('r = ' + r, 'g = ' + g, 'b = ' + b);
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const l = Math.max(r, g, b);
+  const s = l - Math.min(r, g, b);
+  const h = s
+    ? l === r
+      ? (g - b) / s
+      : l === g
+      ? 2 + (b - r) / s
+      : 4 + (r - g) / s
+    : 0;
+  return [
+    60 * h < 0 ? 60 * h + 360 : 60 * h,
+    100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0),
+    (100 * (2 * l - s)) / 2,
+  ];
+
+};
+
 
 
 
