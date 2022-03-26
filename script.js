@@ -30,9 +30,7 @@ function drawing() {
   boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
       let currentColor = window.getComputedStyle(box).getPropertyValue("background-color");
-      //console.log(currentColor);
       rgbToHsl(currentColor);
-      //console.log('hsl = ' + currentColor);
       if (sketchColor === 'rainbow') {
         box.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
       }  
@@ -51,28 +49,88 @@ const rgbToHsl = (color) => {
   let r = parseInt(rgb[0]);
   let g = parseInt(rgb[1]);
   let b = parseInt(rgb[2]);
-  console.log('r = ' + r, 'g = ' + g, 'b = ' + b);
-  console.log(typeof(r));
-  r /= 255, g /= 255, b /= 255;
-  let max = Math.max(r, g, b), min = Math.min(r, g, b);
-  let h, s, l = (max + min) / 2;
+  console.log('original rgb = ' + r, g, b);
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  // Find greatest and smallest channel values
+  let cmin = Math.min(r,g,b),
+      cmax = Math.max(r,g,b),
+      delta = cmax - cmin,
+      h = 0,
+      s = 0,
+      l = 0;
+  // Calculate hue
+  // No difference
+  if (delta == 0)
+    h = 0;
+  // Red is max
+  else if (cmax == r)
+    h = ((g - b) / delta) % 6;
+  // Green is max
+  else if (cmax == g)
+    h = (b - r) / delta + 2;
+  // Blue is max
+  else
+    h = (r - g) / delta + 4;
 
-  if(max == min){
-      h = s = 0; // achromatic
-  }else{
-      let d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      switch(max){
-          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-          case g: h = (b - r) / d + 2; break;
-          case b: h = (r - g) / d + 4; break;
-      }
-      h /= 6;
-  }
-  console.log([h, s, l]);
-  return [h, s, l];
+  h = Math.round(h * 60);
+    
+  // Make negative hues positive behind 360°
+  if (h < 0)
+      h += 360;
+  // Calculate lightness
+  l = (cmax + cmin) / 2;
 
+  // Calculate saturation
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+    
+  // Multiply l and s by 100
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+  darkenColor(h,s,l);
 };
+
+function darkenColor(h,s,l) {
+  let hue = h;
+  let sat = s;
+  let light = l;
+  //if (light >= 0.1) {
+  //  light -= .1
+  //} else if (light < 0.1) {
+  //  light = 0
+  //}
+  hslToRgb(hue, sat, light);
+}
+
+function hslToRgb(h, s, l) {
+  s /= 100;
+  l /= 100;
+
+  let c = (1 - Math.abs(2 * l - 1)) * s,
+      x = c * (1 - Math.abs((h / 60) % 2 - 1)),
+      m = l - c/2,
+      r = 0,
+      g = 0,
+      b = 0;
+if (0 <= h && h < 60) {
+  r = c; g = x; b = 0;
+} else if (60 <= h && h < 120) {
+  r = x; g = c; b = 0;
+} else if (120 <= h && h < 180) {
+  r = 0; g = c; b = x;
+} else if (180 <= h && h < 240) {
+  r = 0; g = x; b = c;
+} else if (240 <= h && h < 300) {
+  r = x; g = 0; b = c;
+} else if (300 <= h && h < 360) {
+  r = c; g = 0; b = x;
+}
+r = Math.round((r + m) * 255);
+g = Math.round((g + m) * 255);
+b = Math.round((b + m) * 255);
+console.log( "rgb(" + r + "," + g + "," + b + ")");
+}
 
 
 
@@ -104,7 +162,4 @@ blueBtn.addEventListener('click', () => sketchColor = '#289eff');
 blackBtn.addEventListener('click', () => sketchColor = 'black');
 rainbowBtn.addEventListener('click', () => sketchColor = 'rainbow');
 eraserBtn.addEventListener('click', () => sketchColor = '#ebebeb'); // #ebebeb is colour of sketch area
-//darkenBtn.addEventListener('click', () => sketchColor = 'darken'); cannot figure out code for this. Come back if I learn more.
-
-
-  
+darkenBtn.addEventListener('click', () => sketchColor = 'darken');
