@@ -31,11 +31,9 @@ function drawing() {
     box.addEventListener('mouseover', () => {
       let currentColor = window.getComputedStyle(box).getPropertyValue("background-color");
       if (sketchColor === 'darken') {
-        console.log(currentColor);
         let colorTohsl = rgbToHsl(currentColor);
         let darker = darkenColor(colorTohsl);
         let darkerToRgb = hslToRgb(darker)
-        console.log(darkerToRgb);
         box.style.backgroundColor = darkerToRgb;
       } else if (sketchColor === 'rainbow') {
         box.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -100,9 +98,9 @@ function darkenColor(color) {
   let hue = parseInt(color[0]);
   let sat = parseInt(color[1]);
   let light = parseInt(color[2]);
-  if (light >= 0.1) {
-    light -= .1
-  } else if (light < 0.1) {
+  if (light >= 0.3) {
+    light -= .3
+  } else if (light < 0.3) {
     light = 0
   }
   return [hue, sat, light];
