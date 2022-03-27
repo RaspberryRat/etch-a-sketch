@@ -30,8 +30,14 @@ function drawing() {
   boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
       let currentColor = window.getComputedStyle(box).getPropertyValue("background-color");
-      rgbToHsl(currentColor);
-      if (sketchColor === 'rainbow') {
+      if (sketchColor === 'darken') {
+        console.log(currentColor);
+        let colorTohsl = rgbToHsl(currentColor);
+        let darker = darkenColor(colorTohsl);
+        let darkerToRgb = hslToRgb(darker)
+        console.log(darkerToRgb);
+        box.style.backgroundColor = darkerToRgb;
+      } else if (sketchColor === 'rainbow') {
         box.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
       }  
       box.style.backgroundColor = sketchColor;
@@ -49,7 +55,6 @@ const rgbToHsl = (color) => {
   let r = parseInt(rgb[0]);
   let g = parseInt(rgb[1]);
   let b = parseInt(rgb[2]);
-  console.log('original rgb = ' + r, g, b);
   r /= 255;
   g /= 255;
   b /= 255;
@@ -88,22 +93,26 @@ const rgbToHsl = (color) => {
   // Multiply l and s by 100
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
-  darkenColor(h,s,l);
+  return [h, s, l];
 };
 
-function darkenColor(h,s,l) {
-  let hue = h;
-  let sat = s;
-  let light = l;
-  //if (light >= 0.1) {
-  //  light -= .1
-  //} else if (light < 0.1) {
-  //  light = 0
-  //}
-  hslToRgb(hue, sat, light);
+function darkenColor(color) {
+  let hue = parseInt(color[0]);
+  let sat = parseInt(color[1]);
+  let light = parseInt(color[2]);
+  if (light >= 0.1) {
+    light -= .1
+  } else if (light < 0.1) {
+    light = 0
+  }
+  return [hue, sat, light];
 }
 
-function hslToRgb(h, s, l) {
+function hslToRgb(color) {
+  let h = parseInt(color[0]);
+  let s = parseInt(color[1]);
+  let l = parseInt(color[2]);
+
   s /= 100;
   l /= 100;
 
@@ -129,7 +138,7 @@ if (0 <= h && h < 60) {
 r = Math.round((r + m) * 255);
 g = Math.round((g + m) * 255);
 b = Math.round((b + m) * 255);
-console.log( "rgb(" + r + "," + g + "," + b + ")");
+return "rgb(" + r + "," + g + "," + b + ")";
 }
 
 
