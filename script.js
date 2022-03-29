@@ -8,6 +8,7 @@ const blackBtn = document.querySelector('#black-btn');
 const rainbowBtn = document.querySelector('#rainbow-btn');
 const eraserBtn = document.querySelector('#eraser-btn');
 const darkenBtn = document.querySelector('#darken-btn');
+const lightenBtn = document.querySelector('#lighten-btn');
 const reset = document.querySelector('.resetBtn');
 let boxes = document.querySelectorAll('.etchBox');
 let sketchColor = 'black'; //starting colour
@@ -35,6 +36,12 @@ function drawing() {
         let darker = darkenColor(colorTohsl);
         let darkerToRgb = hslToRgb(darker)
         box.style.backgroundColor = darkerToRgb;
+      } else if (sketchColor === 'lighten') {
+        let colorTohsl = rgbToHsl(currentColor);
+        let lighter = lighterColor(colorTohsl);
+        let lighterToRgb = hslToRgb(lighter)
+        box.style.backgroundColor = lighterToRgb;
+        
       } else if (sketchColor === 'rainbow') {
         box.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
       }  
@@ -98,10 +105,22 @@ function darkenColor(color) {
   let hue = parseInt(color[0]);
   let sat = parseInt(color[1]);
   let light = parseInt(color[2]);
-  if (light >= 0.3) {
-    light -= .3
-  } else if (light < 0.3) {
+  if (light >= 0.5) {
+    light -= .5
+  } else if (light < 0.5) {
     light = 0
+  }
+  return [hue, sat, light];
+}
+
+function lighterColor(color) {
+  let hue = parseInt(color[0]);
+  let sat = parseInt(color[1]);
+  let light = parseInt(color[2]);
+  if (light <= 95) {
+    light += 5
+  } else if (light > 95) {
+    light = 100
   }
   return [hue, sat, light];
 }
@@ -170,3 +189,4 @@ blackBtn.addEventListener('click', () => sketchColor = 'black');
 rainbowBtn.addEventListener('click', () => sketchColor = 'rainbow');
 eraserBtn.addEventListener('click', () => sketchColor = '#ebebeb'); // #ebebeb is colour of sketch area
 darkenBtn.addEventListener('click', () => sketchColor = 'darken');
+lightenBtn.addEventListener('click', () => sketchColor = 'lighten');

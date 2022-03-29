@@ -95,6 +95,11 @@
   background: linear-gradient(white, black);
 }
 
+#lighten-btn {
+  background: grey;
+  background: linear-gradient(black, white);
+}
+
 .mid-page-container {
   display: flex;
   align-items: center;
