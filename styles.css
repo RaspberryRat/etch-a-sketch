@@ -93,6 +93,7 @@
 #darken-btn {
   background: grey;
   background: linear-gradient(white, black);
+  color: black;
 }
 
 #lighten-btn {
@@ -125,12 +126,12 @@
 /* this and button tranisiton show a yellow highlight around the chosen weapon when clicked */
 .chosen {
   transform: scale(1.2);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: white;
+  box-shadow: 0 0 1rem white;
 }
 
 button {
-  transition: all .9s ease;
+  transition: all .3s ease;
 }
 
 

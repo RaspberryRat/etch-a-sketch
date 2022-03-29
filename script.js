@@ -159,9 +159,6 @@ b = Math.round((b + m) * 255);
 return "rgb(" + r + "," + g + "," + b + ")";
 }
 
-
-
-
 //sets all boxes as default and calls clear grid and draw a new grid size
 function clearBoxes() {
   boxes.forEach((box) => {
@@ -184,8 +181,8 @@ function removeBoxes() {
 btns.forEach(button => 
   button.addEventListener('click', () => {
     button.classList.add('chosen');
-  });
-);
+  }));
+
 
 
 reset.addEventListener('click', clearBoxes);
