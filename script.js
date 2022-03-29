@@ -9,6 +9,7 @@ const rainbowBtn = document.querySelector('#rainbow-btn');
 const eraserBtn = document.querySelector('#eraser-btn');
 const darkenBtn = document.querySelector('#darken-btn');
 const lightenBtn = document.querySelector('#lighten-btn');
+const btns = document.querySelectorAll('button');
 const reset = document.querySelector('.resetBtn');
 let boxes = document.querySelectorAll('.etchBox');
 let sketchColor = 'black'; //starting colour
@@ -180,6 +181,8 @@ function removeBoxes() {
     box.remove());
   }
 
+btns.forEach(button => button.addEventListener('click', button.classList.add('chosen')));
+
 reset.addEventListener('click', clearBoxes);
 container.addEventListener('click', drawing);
 redBtn.addEventListener('click', () => sketchColor = '#ff3d46');
@@ -190,3 +193,11 @@ rainbowBtn.addEventListener('click', () => sketchColor = 'rainbow');
 eraserBtn.addEventListener('click', () => sketchColor = '#ebebeb'); // #ebebeb is colour of sketch area
 darkenBtn.addEventListener('click', () => sketchColor = 'darken');
 lightenBtn.addEventListener('click', () => sketchColor = 'lighten');
+
+//this is function and removeTransition(e) function is required to remove animation from weapon select (the yellow highlight)
+btns.forEach(button => button.addEventListener('transitionend', removeTransition));
+
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  e.target.classList.remove('chosen');
+}

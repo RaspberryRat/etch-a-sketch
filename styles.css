@@ -122,5 +122,16 @@
   margin-left: 90px;
 }
 
+/* this and button tranisiton show a yellow highlight around the chosen weapon when clicked */
+.chosen {
+  transform: scale(1.2);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+button {
+  transition: all .9s ease;
+}
+
 
 
