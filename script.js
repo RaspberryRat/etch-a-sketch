@@ -181,7 +181,12 @@ function removeBoxes() {
     box.remove());
   }
 
-btns.forEach(button => button.addEventListener('click', button.classList.add('chosen')));
+btns.forEach(button => 
+  button.addEventListener('click', () => {
+    button.classList.add('chosen');
+  });
+);
+
 
 reset.addEventListener('click', clearBoxes);
 container.addEventListener('click', drawing);
