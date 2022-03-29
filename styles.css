@@ -108,14 +108,27 @@
   width: 100%;
 }
 
-.btn-color-picker {
+.btn-color-picker,
+.tools {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 300px;
+  align-items: center;
   gap: 30px;
-  margin-right: 15px;
 }
+
+.tools {
+  align-self: center;
+}
+
+.btn-container {
+  margin-left: 165px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  width: 215px;
+}
+  
+
 
 .invisible {
   /* needs to have  .btn-color-picker margin-left and margin-right have to be opposite to center .container */

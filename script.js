@@ -106,9 +106,9 @@ function darkenColor(color) {
   let hue = parseInt(color[0]);
   let sat = parseInt(color[1]);
   let light = parseInt(color[2]);
-  if (light >= 0.5) {
-    light -= .5
-  } else if (light < 0.5) {
+  if (light >= 3) {
+    light -= 3
+  } else if (light < 3) {
     light = 0
   }
   return [hue, sat, light];
@@ -118,9 +118,9 @@ function lighterColor(color) {
   let hue = parseInt(color[0]);
   let sat = parseInt(color[1]);
   let light = parseInt(color[2]);
-  if (light <= 95) {
-    light += 5
-  } else if (light > 95) {
+  if (light <= 97) {
+    light += 3
+  } else if (light > 97) {
     light = 100
   }
   return [hue, sat, light];
